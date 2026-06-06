@@ -38,7 +38,7 @@ export default function Home() {
     <>
       <section className="noise overflow-hidden bg-ink text-paper">
         <div className="site-shell flex min-h-[calc(100vh-5rem)] flex-col justify-center py-16 md:py-24">
-          <p className="eyebrow text-gold-light">Custom business systems</p>
+          <p className="eyebrow text-gold-light">Proprietary business systems</p>
           <h1 className="display-title mt-8 max-w-5xl text-[clamp(4.4rem,10vw,9rem)]">
             Build Systems.
             <span className="block text-gold-light">Buy Back Time.</span>
@@ -47,7 +47,7 @@ export default function Home() {
           <div className="mt-10 grid gap-10 border-t border-paper/15 pt-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-xl font-semibold leading-8 md:text-2xl">Most businesses don&apos;t need more software. They need better systems.</p>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-paper/65 md:text-lg">We build custom business systems that eliminate manual work, streamline operations, and help teams make better decisions.</p>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-paper/65 md:text-lg">We build proprietary business systems that eliminate manual work, streamline operations, and help teams make better decisions.</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
@@ -79,25 +79,29 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y hairline bg-white/35 py-24 md:py-36">
+      <section className="noise scroll-mt-20 border-y border-paper/15 bg-ink py-20 text-paper md:py-28">
         <div className="site-shell">
-          <SectionHeading eyebrow="Business outcomes" title="Technology Is Only Valuable When It Removes Work" />
-          <div className="mt-16 grid gap-px overflow-hidden border hairline bg-ink/12 lg:grid-cols-3">
+          <div className="max-w-5xl">
+            <p className="eyebrow text-gold-light">Business outcomes</p>
+            <h2 className="display-title mt-5 text-4xl text-paper sm:text-5xl md:text-6xl">Technology Is Only Valuable If It Buys Back Your Time To Focus On Higher Value Work</h2>
+          </div>
+          <div className="mt-9 grid gap-4 md:grid-cols-3">
             {outcomes.map((outcome) => (
-              <article key={outcome.label} className="bg-paper p-7 md:p-10">
-                <p className="eyebrow text-gold">{outcome.label}</p>
-                <div className="mt-10">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">Before</p>
-                  <p className="mt-3 min-h-16 text-lg leading-7 text-muted">{outcome.before}</p>
+              <article key={outcome.label} className="border border-paper/16 bg-paper/[0.035] p-6 md:p-7">
+                <p className="eyebrow text-gold-light">{outcome.label}</p>
+                <div className="mt-7">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-paper/38">Before</p>
+                  <p className="mt-2 min-h-12 text-sm leading-6 text-paper/52">{outcome.before}</p>
                 </div>
-                <div className="mt-8 border-t hairline pt-7">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">After</p>
-                  <p className="mt-3 font-display text-5xl tracking-[-0.04em]">{outcome.after}</p>
+                <div className="my-4 flex items-center gap-3 text-gold-light" aria-hidden="true"><span className="h-px flex-1 bg-gold/35" /><span>↓</span><span className="h-px flex-1 bg-gold/35" /></div>
+                <div>
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-gold-light">After</p>
+                  <p className="mt-2 font-display text-4xl leading-none tracking-[-0.04em] text-paper lg:text-5xl">{outcome.after}</p>
                 </div>
               </article>
             ))}
           </div>
-          <p className="mt-10 text-center text-xl font-semibold">Less work. Better information. Faster decisions.</p>
+          <p className="mt-8 text-center text-lg font-semibold text-paper/85">Less work. Better information. More time for higher value work.</p>
         </div>
       </section>
 
@@ -137,7 +141,7 @@ export default function Home() {
         <div className="site-shell grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
           <div>
             <p className="eyebrow text-gold">How advantage grows</p>
-            <h2 className="display-title mt-6 text-5xl md:text-7xl">Start With One Problem</h2>
+            <h2 className="display-title mt-6 text-5xl md:text-7xl">How Advantage Compounds</h2>
           </div>
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row sm:gap-2">
             {philosophyFlow.map((step, index) => (

@@ -9,17 +9,17 @@ const cormorant = Cormorant_Garamond({ variable: "--font-cormorant", subsets: ["
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vitisvera.com"),
-  title: { default: "Vitis Vera | Custom Business Systems", template: "%s | Vitis Vera" },
-  description: "Vitis Vera builds custom business systems that buy back time, reduce manual work, and improve decision-making.",
+  title: { default: "Vitis Vera | Proprietary Business Systems", template: "%s | Vitis Vera" },
+  description: "Vitis Vera builds proprietary business systems that buy back time, reduce manual work, and improve decision-making.",
   keywords: ["workflow automation", "operational systems", "business process automation", "custom internal tools", "operations consulting"],
   openGraph: {
-    title: "Vitis Vera | Custom Business Systems",
-    description: "Custom business systems that buy back time and improve decision-making.",
+    title: "Vitis Vera | Proprietary Business Systems",
+    description: "Proprietary business systems that buy back time and improve decision-making.",
     url: "https://vitisvera.com",
     siteName: "Vitis Vera",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Vitis Vera | Custom Business Systems", description: "Custom business systems that buy back time and improve decision-making." },
+  twitter: { card: "summary_large_image", title: "Vitis Vera | Proprietary Business Systems", description: "Proprietary business systems that buy back time and improve decision-making." },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
