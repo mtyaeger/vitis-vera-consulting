@@ -29,11 +29,11 @@ The primary message is:
 - TypeScript
 - [Tailwind CSS](https://tailwindcss.com/) 4
 - ESLint with Next.js Core Web Vitals rules
-- Static rendering for all public routes
+- Static rendering for public pages with a server-side contact endpoint
 - Vercel-ready deployment
 
-The current site does not require a database, API, environment variables, or
-external runtime services.
+The site does not require a database. Contact-form delivery uses Resend and
+requires the environment variables documented below.
 
 ## Pages
 
@@ -42,7 +42,7 @@ external runtime services.
 | `/` | Core positioning, business pain, outcomes, methodology, and contact CTA |
 | `/about` | Company perspective, founders, and brief product history |
 | `/system-method` | The sequential SYSTEM operating methodology |
-| `/contact` | Contact details and guidance for starting a conversation |
+| `/contact` | Context-first project intake and guidance for starting a conversation |
 
 ## Homepage Structure
 
@@ -112,6 +112,19 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Contact form email
+
+Copy `.env.example` to `.env.local` and configure the server-side Resend integration:
+
+```bash
+RESEND_API_KEY=re_your_api_key
+CONTACT_FROM_EMAIL=Vitis Vera <contact@vitisvera.com>
+CONTACT_TO_EMAIL=mark@vitisvera.com
+```
+
+`CONTACT_FROM_EMAIL` must use a sender domain verified in Resend. Add the same
+variables to the Vercel project before deploying the form.
 
 ## Available Commands
 
