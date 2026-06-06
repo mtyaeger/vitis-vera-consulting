@@ -45,15 +45,15 @@ export default function Home() {
       <section className="noise overflow-hidden bg-ink text-paper">
         <div className="site-shell flex min-h-[calc(88vh-5rem)] flex-col justify-center py-14 md:py-20">
           <p className="eyebrow text-gold-light">Business systems consulting & implementation</p>
-          <h1 className="display-title mt-7 max-w-6xl text-[clamp(3.8rem,7.6vw,7.2rem)] leading-[0.9]">
-            We Solve Operational Problems.
+          <h1 className="display-title mt-7 max-w-6xl text-[clamp(3.15rem,5.7vw,5.5rem)] leading-[0.9]">
+            <span className="block">We Find The Friction.</span>
+            <span className="block">We Build The Tool.</span>
             <span className="block text-gold-light">You Buy Back Time.</span>
             <span className="block">Your Team Makes Better Decisions.</span>
           </h1>
           <div className="mt-8 grid gap-8 border-t border-paper/15 pt-7 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-xl font-semibold leading-8 md:text-2xl">Businesses hire Vitis Vera to fix expensive operational problems with custom business systems.</p>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-paper/65 md:text-lg">We combine business consulting with hands-on implementation. Software, AI, automation, and integrations are tools we use when they create measurable value.</p>
+              <p className="max-w-2xl text-base leading-7 text-paper/70 md:text-lg">We work with business owners and leadership teams to identify operational friction, build practical business tools, and make AI useful where it creates measurable value.</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
