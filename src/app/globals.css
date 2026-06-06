@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #11110f;
+  --paper: #f5f2ea;
+  --paper-deep: #ebe5d8;
+  --gold: #b58a39;
+  --gold-light: #d4b574;
+  --muted: #6f6c64;
+  --line: rgba(17, 17, 15, 0.14);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-cormorant);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+}
+::selection { background: var(--gold); color: white; }
+a, button { -webkit-tap-highlight-color: transparent; }
+.site-shell { width: min(100% - 2rem, 1240px); margin-inline: auto; }
+.eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.19em; text-transform: uppercase; }
+.display-title { font-family: var(--font-cormorant), serif; font-weight: 500; letter-spacing: -0.045em; line-height: 0.94; }
+.hairline { border-color: var(--line); }
+.gold-rule { width: 2.75rem; height: 1px; background: var(--gold); }
+.noise { position: relative; isolation: isolate; }
+.noise::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  content: "";
+  pointer-events: none;
+}
+@media (min-width: 768px) { .site-shell { width: min(100% - 4rem, 1240px); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
