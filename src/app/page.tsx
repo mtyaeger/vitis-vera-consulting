@@ -1,6 +1,13 @@
 import Link from "next/link";
 
-const painFlow = ["Manual work", "Lost time", "Poor visibility", "Slower decisions"];
+const timeLossAreas = [
+  "Manual reporting",
+  "Spreadsheet work",
+  "Data entry",
+  "Copying information between systems",
+  "Meeting preparation",
+  "Approval bottlenecks",
+];
 
 const outcomes = [
   { label: "Reporting", before: "Three hours preparing reports", after: "Ten seconds" },
@@ -9,26 +16,25 @@ const outcomes = [
 ];
 
 const differences = [
-  { number: "01", title: "Own Your System", body: "Keep control of the processes and information that make your business valuable." },
-  { number: "02", title: "Built Around Your Team", body: "The system fits the operation instead of forcing the operation to fit software." },
-  { number: "03", title: "Grow At Your Own Pace", body: "Expand only after the current solution creates measurable value." },
-  { number: "04", title: "Designed To Evolve", body: "Improve the system as your business, priorities, and technology change." },
+  { number: "01", title: "Business First", body: "We understand the operation and the cost of the problem before recommending technology." },
+  { number: "02", title: "Built And Implemented For You", body: "We design, build, and put the system into practice with the people who will use it." },
+  { number: "03", title: "Value Before Expansion", body: "We prove the business impact before recommending what should be built next." },
+  { number: "04", title: "Designed To Adapt", body: "The system can evolve as your business, team, and priorities change." },
 ];
 
-const workSteps = [
-  "Identify the bottleneck",
-  "Build the solution",
-  "Measure the impact",
-  "Expand when it creates value",
+const aiOutcomes = [
+  { number: "01", title: "Reduce Work", body: "Handle repetitive tasks so your team can focus on higher-value work." },
+  { number: "02", title: "Improve Visibility", body: "Turn scattered information into clear, useful operational insight." },
+  { number: "03", title: "Support Better Decisions", body: "Give people timely context without removing human judgment." },
 ];
 
-const philosophyFlow = ["Problem", "Tool", "Habit", "System", "Competitive advantage"];
+const systemProgression = ["Problem", "Tool", "Trust", "Next Tool", "Operating System"];
 
-function SectionHeading({ eyebrow, title, light = false }: { eyebrow: string; title: string; light?: boolean }) {
+function SectionHeading({ eyebrow, title, light = false, compact = false }: { eyebrow: string; title: string; light?: boolean; compact?: boolean }) {
   return (
     <div className="max-w-4xl">
       <p className={`eyebrow ${light ? "text-gold-light" : "text-gold"}`}>{eyebrow}</p>
-      <h2 className={`display-title mt-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl ${light ? "text-paper" : "text-ink"}`}>{title}</h2>
+      <h2 className={`display-title mt-5 ${compact ? "text-4xl sm:text-5xl md:text-6xl" : "text-5xl sm:text-6xl md:text-7xl"} ${light ? "text-paper" : "text-ink"}`}>{title}</h2>
     </div>
   );
 }
@@ -37,17 +43,17 @@ export default function Home() {
   return (
     <>
       <section className="noise overflow-hidden bg-ink text-paper">
-        <div className="site-shell flex min-h-[calc(100vh-5rem)] flex-col justify-center py-16 md:py-24">
-          <p className="eyebrow text-gold-light">Proprietary business systems</p>
-          <h1 className="display-title mt-8 max-w-5xl text-[clamp(4.4rem,10vw,9rem)]">
-            Build Systems.
-            <span className="block text-gold-light">Buy Back Time.</span>
-            <span className="block">Improve Decisions.</span>
+        <div className="site-shell flex min-h-[calc(88vh-5rem)] flex-col justify-center py-14 md:py-20">
+          <p className="eyebrow text-gold-light">Business systems consulting & implementation</p>
+          <h1 className="display-title mt-7 max-w-6xl text-[clamp(3.8rem,7.6vw,7.2rem)] leading-[0.9]">
+            We Solve Operational Problems.
+            <span className="block text-gold-light">You Buy Back Time.</span>
+            <span className="block">Your Team Makes Better Decisions.</span>
           </h1>
-          <div className="mt-10 grid gap-10 border-t border-paper/15 pt-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="mt-8 grid gap-8 border-t border-paper/15 pt-7 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-xl font-semibold leading-8 md:text-2xl">Most businesses don&apos;t need more software. They need better systems.</p>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-paper/65 md:text-lg">We build proprietary business systems that eliminate manual work, streamline operations, and help teams make better decisions.</p>
+              <p className="text-xl font-semibold leading-8 md:text-2xl">Businesses hire Vitis Vera to fix expensive operational problems with custom business systems.</p>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-paper/65 md:text-lg">We combine business consulting with hands-on implementation. Software, AI, automation, and integrations are tools we use when they create measurable value.</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
@@ -57,127 +63,130 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 md:py-36">
-        <div className="site-shell grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+      <section className="border-b hairline py-18 md:py-24">
+        <div className="site-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <SectionHeading eyebrow="Business pain" title="Most Businesses Lose Hours Every Week To Manual Work" />
-            <div className="mt-8 text-lg leading-9 text-muted">
-              <p>Spreadsheets. Manual reporting. Data entry.</p>
-              <p>Disconnected systems. Repetitive tasks.</p>
-              <p className="mt-5 max-w-2xl text-ink">Most businesses are not struggling because they lack software. They are struggling because their systems create unnecessary work.</p>
+            <SectionHeading eyebrow="The problems we solve" title="Where Is Your Team Losing Time?" compact />
+            <div className="mt-6 text-base leading-8 text-muted md:text-lg">
+              <p>Small, repetitive tasks become expensive when they happen across an entire team every week.</p>
+              <p className="mt-4 max-w-2xl font-semibold text-ink">Most businesses do not have an AI problem.</p>
+              <p className="max-w-2xl font-semibold text-ink">They have a time problem.</p>
             </div>
           </div>
-          <div className="border-t hairline lg:mt-14">
-            {painFlow.map((step, index) => (
-              <div key={step} className="relative border-b hairline py-7 pl-16">
-                <span className="absolute left-0 top-6 font-display text-3xl text-gold">0{index + 1}</span>
-                <p className="text-2xl font-semibold tracking-[-0.025em]">{step}</p>
-                {index < painFlow.length - 1 && <span className="absolute bottom-[-0.8rem] left-[0.7rem] z-10 bg-paper px-1 text-gold" aria-hidden="true">↓</span>}
+          <div className="grid border-l border-t hairline sm:grid-cols-2">
+            {timeLossAreas.map((item, index) => (
+              <div key={item} className="flex min-h-24 items-center gap-4 border-b border-r hairline p-5">
+                <span className="font-display text-2xl text-gold">0{index + 1}</span>
+                <p className="text-base font-semibold leading-6 tracking-[-0.02em] md:text-lg">{item}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="noise scroll-mt-20 border-y border-paper/15 bg-ink py-20 text-paper md:py-28">
+      <section className="noise scroll-mt-20 bg-ink py-18 text-paper md:py-24">
         <div className="site-shell">
-          <div className="max-w-5xl">
-            <p className="eyebrow text-gold-light">Business outcomes</p>
-            <h2 className="display-title mt-5 text-4xl text-paper sm:text-5xl md:text-6xl">Technology Is Only Valuable If It Buys Back Your Time To Focus On Higher Value Work</h2>
+          <div className="grid gap-5 border-b border-paper/15 pb-8 lg:grid-cols-[auto_1fr] lg:items-end lg:gap-16">
+            <p className="eyebrow text-gold-light lg:pb-2">Business outcomes</p>
+            <h2 className="display-title max-w-5xl text-4xl text-paper sm:text-5xl md:text-6xl">Buy Back Time. <span className="text-gold-light">Make Better Decisions.</span></h2>
           </div>
-          <div className="mt-9 grid gap-4 md:grid-cols-3">
+          <div className="grid border-l border-paper/18 md:grid-cols-3">
             {outcomes.map((outcome) => (
-              <article key={outcome.label} className="border border-paper/16 bg-paper/[0.035] p-6 md:p-7">
+              <article key={outcome.label} className="border-r border-b border-paper/18 bg-paper/[0.045] p-6 md:p-7">
                 <p className="eyebrow text-gold-light">{outcome.label}</p>
-                <div className="mt-7">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-paper/38">Before</p>
-                  <p className="mt-2 min-h-12 text-sm leading-6 text-paper/52">{outcome.before}</p>
+                <div className="mt-6 border-l border-paper/20 pl-4">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-paper/45">Before</p>
+                  <p className="mt-2 min-h-12 text-sm leading-6 text-paper/60">{outcome.before}</p>
                 </div>
-                <div className="my-4 flex items-center gap-3 text-gold-light" aria-hidden="true"><span className="h-px flex-1 bg-gold/35" /><span>↓</span><span className="h-px flex-1 bg-gold/35" /></div>
-                <div>
+                <div className="my-4 flex items-center gap-3 text-gold-light" aria-hidden="true"><span className="h-px flex-1 bg-gold/55" /><span className="text-lg">↓</span><span className="h-px flex-1 bg-gold/55" /></div>
+                <div className="border-l-2 border-gold pl-4">
                   <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-gold-light">After</p>
-                  <p className="mt-2 font-display text-4xl leading-none tracking-[-0.04em] text-paper lg:text-5xl">{outcome.after}</p>
+                  <p className="mt-2 font-display text-4xl leading-[0.95] tracking-[-0.04em] text-paper lg:text-5xl">{outcome.after}</p>
                 </div>
               </article>
             ))}
           </div>
-          <p className="mt-8 text-center text-lg font-semibold text-paper/85">Less work. Better information. More time for higher value work.</p>
+          <p className="mt-6 text-center text-base font-semibold text-paper/80 md:text-lg">Less work. Better information. More time for higher value work.</p>
         </div>
       </section>
 
-      <section className="noise bg-ink py-24 text-paper md:py-36">
-        <div className="site-shell">
-          <SectionHeading eyebrow="Why we are different" title="Your Business Should Own Its Competitive Advantage" light />
-          <div className="mt-16 grid border-l border-t border-paper/16 md:grid-cols-2">
-            {differences.map((item) => (
-              <article key={item.title} className="min-h-56 border-b border-r border-paper/16 p-7 md:p-9">
-                <p className="text-xs text-gold-light">{item.number}</p>
-                <h3 className="mt-8 font-display text-4xl tracking-[-0.035em]">{item.title}</h3>
-                <p className="mt-4 max-w-md text-sm leading-7 text-paper/60">{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="how-we-work" className="scroll-mt-20 py-24 md:py-36">
-        <div className="site-shell grid gap-16 lg:grid-cols-[0.75fr_1.25fr]">
+      <section className="border-b hairline bg-paper-deep/35 py-18 md:py-24">
+        <div className="site-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
           <div>
-            <SectionHeading eyebrow="How we work" title="We Earn The Right To Build The Next Tool" />
-            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">Every project should create measurable value before moving to the next phase.</p>
+            <SectionHeading eyebrow="Practical AI" title="Make AI Useful" compact />
+            <p className="mt-6 max-w-xl text-base leading-8 text-muted md:text-lg">AI should make the business easier to run. We use it where it can reduce work, improve visibility, or help people make better decisions.</p>
+            <p className="mt-4 max-w-xl text-base font-semibold leading-8 text-ink md:text-lg">The measure is whether it creates a better business outcome.</p>
           </div>
           <div className="border-t hairline">
-            {workSteps.map((step, index) => (
-              <div key={step} className="grid gap-4 border-b hairline py-7 sm:grid-cols-[5rem_1fr] sm:items-center">
-                <span className="font-display text-4xl text-gold">0{index + 1}</span>
-                <p className="text-xl font-semibold tracking-[-0.025em]">{step}</p>
+            {aiOutcomes.map((item) => (
+              <div key={item.title} className="grid gap-3 border-b hairline py-6 sm:grid-cols-[4rem_0.8fr_1.2fr] sm:gap-6">
+                <span className="font-display text-3xl text-gold">{item.number}</span>
+                <h3 className="text-xl font-semibold tracking-[-0.025em]">{item.title}</h3>
+                <p className="text-sm leading-7 text-muted md:text-base">{item.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y hairline bg-white/35 py-24 md:py-32">
-        <div className="site-shell grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-          <div>
-            <p className="eyebrow text-gold">How advantage grows</p>
-            <h2 className="display-title mt-6 text-5xl md:text-7xl">How Advantage Compounds</h2>
-          </div>
-          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row sm:gap-2">
-            {philosophyFlow.map((step, index) => (
-              <div key={step} className="contents">
-                <div className="w-full flex-1 border hairline bg-paper px-4 py-5 text-center text-sm font-semibold sm:min-h-24 sm:place-content-center">{step}</div>
-                {index < philosophyFlow.length - 1 && <span className="rotate-90 text-gold sm:rotate-0" aria-hidden="true">→</span>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 md:py-32">
-        <div className="site-shell grid gap-12 lg:grid-cols-[0.65fr_1.35fr]">
-          <p className="eyebrow text-gold">Built by operators</p>
-          <div>
-            <h2 className="display-title text-5xl md:text-7xl">Built By Operators, Not Just Developers</h2>
-            <p className="mt-8 max-w-3xl text-lg leading-9 text-muted">We have spent years running businesses, leading teams, managing operations, and solving real-world business problems.</p>
-            <p className="mt-4 max-w-3xl text-lg leading-9 text-ink">We build systems designed to create measurable business outcomes, not technology for technology&apos;s sake.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="noise bg-ink py-28 text-center text-paper md:py-40">
+      <section className="noise bg-ink py-18 text-paper md:py-24">
         <div className="site-shell">
-          <p className="display-title mx-auto max-w-5xl text-6xl sm:text-7xl md:text-9xl">Buy Back Time.<span className="block text-gold-light">Improve Decisions.</span><span className="block">Build Advantage.</span></p>
-          <p className="mx-auto mt-10 max-w-2xl text-lg leading-9 text-paper/65">The companies that win are not necessarily the ones with the most software. They are the ones with the best systems.</p>
+          <SectionHeading eyebrow="Why businesses hire us" title="A Business Partner, Not Another Platform" light compact />
+          <div className="mt-10 grid border-l border-t border-paper/16 md:grid-cols-2">
+            {differences.map((item) => (
+              <article key={item.title} className="border-b border-r border-paper/16 p-6 md:p-7">
+                <p className="text-xs text-gold-light">{item.number}</p>
+                <h3 className="mt-5 font-display text-3xl tracking-[-0.035em] md:text-4xl">{item.title}</h3>
+                <p className="mt-3 max-w-md text-sm leading-7 text-paper/60">{item.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-24 md:py-36">
+      <section id="how-we-work" className="scroll-mt-20 border-b hairline py-18 md:py-24">
+        <div className="site-shell grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <div>
+            <SectionHeading eyebrow="How we work" title="We Earn The Right To Build The Next Tool" compact />
+            <p className="mt-6 max-w-xl text-base leading-8 text-muted md:text-lg">We start with one important problem, build the smallest useful tool, and prove its value in the business.</p>
+            <p className="mt-4 max-w-xl text-base leading-8 text-ink md:text-lg">Trust and measurable results determine what gets built next. Over time, proven tools can become a proprietary operating system designed around your business.</p>
+          </div>
+          <div className="border-t hairline">
+            {systemProgression.map((step, index) => (
+              <div key={step} className="relative grid gap-4 border-b hairline py-5 sm:grid-cols-[5rem_1fr] sm:items-center">
+                <span className="font-display text-3xl text-gold">0{index + 1}</span>
+                <p className="font-display text-3xl tracking-[-0.035em] md:text-[2.5rem]">{step}</p>
+                {index < systemProgression.length - 1 && <span className="absolute bottom-[-0.8rem] left-[0.7rem] z-10 bg-paper px-1 text-gold" aria-hidden="true">↓</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white/35 py-18 md:py-24">
+        <div className="site-shell grid gap-12 lg:grid-cols-[0.65fr_1.35fr]">
+          <p className="eyebrow text-gold">Who you are hiring</p>
+          <div>
+            <h2 className="display-title text-5xl md:text-6xl">Built By Operators</h2>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-muted md:text-lg">Our perspective comes from years spent running businesses, leading teams, managing operations, selling, and solving real-world business problems.</p>
+            <p className="mt-3 max-w-3xl text-base leading-8 text-ink md:text-lg">We understand the pressure behind the process because we have worked inside it. That experience shapes practical systems built for adoption and measurable results.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="noise border-y border-paper/15 bg-ink py-20 text-center text-paper md:py-28">
+        <div className="site-shell">
+          <p className="display-title mx-auto max-w-5xl text-5xl sm:text-6xl md:text-7xl">Buy Back Time.<span className="block text-gold-light">Improve Decisions.</span><span className="block">Build Advantage.</span></p>
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-paper/65 md:text-lg">We help businesses replace operational friction with custom systems that make the work easier and the business clearer.</p>
+        </div>
+      </section>
+
+      <section className="py-18 md:py-24">
         <div className="site-shell grid gap-12 border-t hairline pt-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="eyebrow text-gold">A practical first step</p>
-            <h2 className="display-title mt-6 text-6xl md:text-8xl">Start With One Problem</h2>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-muted">You do not need a massive transformation project. You need a better way to solve the next problem in front of you.</p>
+            <h2 className="display-title mt-5 text-5xl md:text-6xl">Bring Us One Operational Problem</h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">We will help you understand the opportunity, determine the right system, and decide whether the business case is strong enough to build it.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-ink px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-paper transition-colors hover:bg-gold hover:text-ink">Schedule a discovery call</Link>
