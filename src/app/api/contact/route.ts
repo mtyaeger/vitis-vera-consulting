@@ -28,24 +28,44 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { name, email, workflow, outcome } = body as Record<string, unknown>;
+  const { name, email, phone, preferredContact, workflow, outcome } = body as Record<string, unknown>;
 
   if (
     !isNonEmptyString(name) ||
     !isNonEmptyString(email) ||
+    !isNonEmptyString(preferredContact) ||
     !isNonEmptyString(workflow) ||
     !isNonEmptyString(outcome)
   ) {
-    return NextResponse.json({ error: "Please complete all four fields." }, { status: 400 });
+    return NextResponse.json({ error: "Please complete all required fields." }, { status: 400 });
   }
 
-  if (name.length > 100 || email.length > 254 || workflow.length > 2000 || outcome.length > 1200) {
+  if (
+    name.length > 100 ||
+    email.length > 254 ||
+    (typeof phone === "string" && phone.length > 40) ||
+    preferredContact.length > 10 ||
+    workflow.length > 2000 ||
+    outcome.length > 1200
+  ) {
     return NextResponse.json({ error: "One or more fields are too long." }, { status: 400 });
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+  }
+
+  if (preferredContact !== "Email" && preferredContact !== "Call") {
+    return NextResponse.json({ error: "Please select a valid contact method." }, { status: 400 });
+  }
+
+  if (preferredContact === "Call" && !isNonEmptyString(phone)) {
+    return NextResponse.json({ error: "Please enter a phone number if you prefer a call." }, { status: 400 });
+  }
+
+  if (phone !== undefined && typeof phone !== "string") {
+    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -62,6 +82,8 @@ export async function POST(request: Request) {
 
   const safeName = escapeHtml(name.trim());
   const safeEmail = escapeHtml(email.trim());
+  const safePhone = isNonEmptyString(phone) ? escapeHtml(phone.trim()) : "Not provided";
+  const safePreferredContact = escapeHtml(preferredContact);
   const safeWorkflow = escapeHtml(workflow.trim()).replaceAll("\n", "<br />");
   const safeOutcome = escapeHtml(outcome.trim()).replaceAll("\n", "<br />");
 
@@ -80,10 +102,12 @@ export async function POST(request: Request) {
         <h1>New Vitis Vera context intake</h1>
         <p><strong>Name</strong><br />${safeName}</p>
         <p><strong>Email</strong><br />${safeEmail}</p>
+        <p><strong>Phone Number</strong><br />${safePhone}</p>
+        <p><strong>Preferred Method of Contact</strong><br />${safePreferredContact}</p>
         <p><strong>Workflow / problem</strong><br />${safeWorkflow}</p>
         <p><strong>Better outcome</strong><br />${safeOutcome}</p>
       `,
-      text: `New Vitis Vera context intake\n\nName\n${name.trim()}\n\nEmail\n${email.trim()}\n\nWorkflow / problem\n${workflow.trim()}\n\nBetter outcome\n${outcome.trim()}`,
+      text: `New Vitis Vera context intake\n\nName\n${name.trim()}\n\nEmail\n${email.trim()}\n\nPhone Number\n${isNonEmptyString(phone) ? phone.trim() : "Not provided"}\n\nPreferred Method of Contact\n${preferredContact}\n\nWorkflow / problem\n${workflow.trim()}\n\nBetter outcome\n${outcome.trim()}`,
     }),
   });
 
