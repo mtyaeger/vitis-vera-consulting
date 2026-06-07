@@ -40,7 +40,8 @@ requires the environment variables documented below.
 | Route | Purpose |
 | --- | --- |
 | `/` | Core positioning, business pain, outcomes, methodology, and contact CTA |
-| `/about` | Company perspective, founders, and brief product history |
+| `/about` | Company philosophy, approach, founders, and intended outcomes |
+| `/our-process` | Engagement stages, working details, pricing, and ownership |
 | `/system-method` | The sequential SYSTEM operating methodology |
 | `/contact` | Context-first project intake and guidance for starting a conversation |
 
@@ -63,14 +64,15 @@ src/
 ├── app/
 │   ├── about/page.tsx
 │   ├── contact/page.tsx
+│   ├── our-process/page.tsx
 │   ├── system-method/page.tsx
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
 └── components/
     ├── brand-mark.tsx
+    ├── context-intake-form.tsx
     ├── page-hero.tsx
-    ├── section-heading.tsx
     ├── site-footer.tsx
     ├── site-header.tsx
     └── system-grid.tsx
@@ -124,7 +126,8 @@ CONTACT_TO_EMAIL=mark@vitisvera.com,junaid@vitisvera.com
 ```
 
 `CONTACT_FROM_EMAIL` must use a sender domain verified in Resend. Add the same
-variables to the Vercel project before deploying the form.
+variables to the Vercel project before deploying the form. Separate multiple
+`CONTACT_TO_EMAIL` recipients with commas.
 
 ## Available Commands
 
