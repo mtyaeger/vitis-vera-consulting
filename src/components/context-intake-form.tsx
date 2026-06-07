@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "error";
 type ContactMethod = "" | "Email" | "Call";
@@ -10,11 +10,19 @@ export function ContextIntakeForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [preferredContact, setPreferredContact] = useState<ContactMethod>("");
   const [showSuccess, setShowSuccess] = useState(false);
+  const submittingRef = useRef(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (submittingRef.current) {
+      return;
+    }
+
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
+    setShowSuccess(false);
 
     const form = event.currentTarget;
     const payload = Object.fromEntries(new FormData(form).entries());
@@ -26,9 +34,14 @@ export function ContextIntakeForm() {
         body: JSON.stringify(payload),
       });
 
+      const result = (await response.json().catch(() => null)) as { success?: boolean; error?: string } | null;
+
       if (!response.ok) {
-        const result = (await response.json().catch(() => null)) as { error?: string } | null;
         throw new Error(result?.error || "Your context could not be sent.");
+      }
+
+      if (result?.success !== true) {
+        throw new Error("Your context could not be sent.");
       }
 
       form.reset();
@@ -39,6 +52,8 @@ export function ContextIntakeForm() {
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Your context could not be sent.");
+    } finally {
+      submittingRef.current = false;
     }
   }
 
