@@ -8,6 +8,7 @@ import { BrandMark } from "./brand-mark";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/our-process", label: "Our Process" },
   { href: "/system-method", label: "SYSTEM" },
   { href: "/contact", label: "Contact" },
 ];
