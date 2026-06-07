@@ -50,10 +50,13 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL || "mark@vitisvera.com";
+  const toEmails = (process.env.CONTACT_TO_EMAIL || "mark@vitisvera.com,junaid@vitisvera.com")
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
 
-  if (!apiKey || !fromEmail) {
-    console.error("Contact email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL.");
+  if (!apiKey || !fromEmail || toEmails.length === 0) {
+    console.error("Contact email is not configured. Set RESEND_API_KEY, CONTACT_FROM_EMAIL, and CONTACT_TO_EMAIL.");
     return NextResponse.json({ error: "Email delivery is temporarily unavailable." }, { status: 503 });
   }
 
@@ -70,7 +73,7 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       from: fromEmail,
-      to: [toEmail],
+      to: toEmails,
       reply_to: email.trim(),
       subject: "New Vitis Vera context intake",
       html: `

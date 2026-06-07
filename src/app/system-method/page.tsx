@@ -11,7 +11,16 @@ export const metadata: Metadata = {
 export default function SystemMethodPage() {
   return (
     <>
-      <PageHero eyebrow="The SYSTEM Method" title="A connected process from decision to measurable result." intro="SYSTEM is how we identify opportunities, prioritize solutions, create organizational buy-in, and determine what gets built first." />
+      <PageHero
+        eyebrow="The SYSTEM Method"
+        lines={[
+          "A Connected Process",
+          "From Friction",
+          "To Measurable Result.",
+        ]}
+        highlightIndex={2}
+        intro="SYSTEM is how we identify opportunities, prioritize solutions, create organizational buy-in, and determine what gets built first."
+      />
 
       <section className="border-b hairline bg-paper-deep">
         <div className="site-shell flex flex-wrap items-center justify-center gap-x-5 gap-y-3 py-6 md:gap-x-8">

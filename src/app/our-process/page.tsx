@@ -103,7 +103,12 @@ export default function OurProcessPage() {
     <>
       <PageHero
         eyebrow="From first conversation to working solution"
-        title="Our Process"
+        lines={[
+          "Find The Right Problem.",
+          "Build The Right Solution.",
+          "Prove The Value First.",
+        ]}
+        highlightIndex={2}
         intro="Every business has inefficiencies. The challenge is knowing which one to solve first. Our process identifies the highest-impact opportunities, builds practical solutions, and helps your team spend less time on repetitive work and more time on the people, decisions, and relationships that drive growth."
       />
 

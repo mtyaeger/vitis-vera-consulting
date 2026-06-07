@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageHero } from "@/components/page-hero";
 
 const timeLossAreas = [
   "Manual reporting",
@@ -42,26 +43,23 @@ function SectionHeading({ eyebrow, title, light = false, compact = false }: { ey
 export default function Home() {
   return (
     <>
-      <section className="noise overflow-hidden bg-ink text-paper">
-        <div className="site-shell flex min-h-[calc(88vh-5rem)] flex-col justify-center py-14 md:py-20">
-          <p className="eyebrow text-gold-light">Business systems consulting & implementation</p>
-          <h1 className="display-title mt-7 max-w-6xl text-[clamp(3.15rem,5.7vw,5.5rem)] leading-[0.9]">
-            <span className="block">We Find The Friction.</span>
-            <span className="block">We Build The Tool.</span>
-            <span className="block text-gold-light">You Buy Back Time.</span>
-            <span className="block">Your Team Makes Better Decisions.</span>
-          </h1>
-          <div className="mt-8 grid gap-8 border-t border-paper/15 pt-7 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="max-w-3xl">
-              <p className="max-w-2xl text-base leading-7 text-paper/70 md:text-lg">We work with business owners and leadership teams to identify operational friction, build practical business tools, and make AI useful where it creates measurable value.</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
-              <Link href="#how-we-work" className="inline-flex min-h-14 items-center justify-center border border-paper/25 px-7 text-center text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-gold hover:text-gold-light">See how we work</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Business systems consulting & implementation"
+        lines={[
+          "We Find The Friction.",
+          "We Build The Tool.",
+          "You Buy Back Time.",
+          "Your Team Makes Better Decisions.",
+        ]}
+        highlightIndex={2}
+        intro="We work with business owners and leadership teams to identify operational friction, build practical business tools, and make AI useful where it creates measurable value."
+        actions={
+          <>
+            <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
+            <Link href="#how-we-work" className="inline-flex min-h-14 items-center justify-center border border-paper/25 px-7 text-center text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-gold hover:text-gold-light">See how we work</Link>
+          </>
+        }
+      />
 
       <section className="border-b hairline py-18 md:py-24">
         <div className="site-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">

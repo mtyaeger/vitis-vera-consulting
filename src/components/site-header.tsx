@@ -7,10 +7,10 @@ import { BrandMark } from "./brand-mark";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About Us" },
   { href: "/our-process", label: "Our Process" },
-  { href: "/system-method", label: "SYSTEM" },
-  { href: "/contact", label: "Contact" },
+  { href: "/system-method", label: "Our System" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export function SiteHeader() {

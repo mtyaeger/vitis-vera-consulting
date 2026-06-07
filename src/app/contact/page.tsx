@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContextIntakeForm } from "@/components/context-intake-form";
+import { PageHero } from "@/components/page-hero";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -42,18 +43,19 @@ const contextExamples = [
 export default function ContactPage() {
   return (
     <>
-      <section className="noise bg-ink text-paper">
-        <div className="site-shell grid gap-12 py-14 md:py-20 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-16">
-          <div>
-            <p className="eyebrow text-gold-light">Start with the work</p>
-            <h1 className="display-title mt-6 max-w-2xl text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-              Tell us where time is being lost. We will help build the solution.
-            </h1>
-            <p className="mt-7 max-w-xl text-base leading-8 text-paper/68 md:text-lg">
-              Bring us one workflow, report, handoff, or decision that keeps slowing your team down. We will help identify what should be fixed first, then design and build the tool, process, or system that buys that time back.
-            </p>
-          </div>
+      <PageHero
+        eyebrow="Start with the work"
+        lines={[
+          "Tell Us Where",
+          "Time Is Being Lost.",
+          "We'll Help Build The Solution.",
+        ]}
+        highlightIndex={2}
+        intro="Bring us one workflow, report, handoff, or decision that keeps slowing your team down. We will help identify what should be fixed first, then design and build the tool, process, or system that buys that time back."
+      />
 
+      <section className="border-b hairline bg-paper-deep py-16 md:py-20">
+        <div className="site-shell mx-auto max-w-3xl">
           <ContextIntakeForm />
         </div>
       </section>

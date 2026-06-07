@@ -120,7 +120,7 @@ Copy `.env.example` to `.env.local` and configure the server-side Resend integra
 ```bash
 RESEND_API_KEY=re_your_api_key
 CONTACT_FROM_EMAIL=Vitis Vera <contact@vitisvera.com>
-CONTACT_TO_EMAIL=mark@vitisvera.com
+CONTACT_TO_EMAIL=mark@vitisvera.com,junaid@vitisvera.com
 ```
 
 `CONTACT_FROM_EMAIL` must use a sender domain verified in Resend. Add the same
