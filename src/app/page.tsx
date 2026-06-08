@@ -56,7 +56,7 @@ export default function Home() {
         actions={
           <>
             <Link href="/contact" className="inline-flex min-h-14 items-center justify-center bg-gold px-7 text-center text-xs font-bold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-gold-light">Schedule a discovery call</Link>
-            <Link href="#how-we-work" className="inline-flex min-h-14 items-center justify-center border border-paper/25 px-7 text-center text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-gold hover:text-gold-light">See how we work</Link>
+            <Link href="/our-process" className="inline-flex min-h-14 items-center justify-center border border-paper/25 px-7 text-center text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-gold hover:text-gold-light">See how we work</Link>
           </>
         }
       />
